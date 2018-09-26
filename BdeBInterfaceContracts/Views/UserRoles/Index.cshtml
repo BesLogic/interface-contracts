@@ -1,0 +1,23 @@
+﻿@using BdeBInterfaceContracts.Models
+
+@model IEnumerable<UserRole>
+
+@{
+    ViewBag.Title = "Rôles";
+}
+
+<table class="table">
+	<tr>
+		<th>
+			Nom
+		</th>
+	</tr>
+	@foreach (var role in Model)
+	{
+		<tr>
+			<td>
+				@role.Name
+			</td>
+		</tr>
+	}
+</table>

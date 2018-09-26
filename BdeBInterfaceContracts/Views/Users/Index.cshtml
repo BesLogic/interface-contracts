@@ -1,0 +1,62 @@
+﻿@using BdeBInterfaceContracts.Models
+
+@model IEnumerable<User>
+
+@{
+	ViewBag.Title = "Utilisateurs";
+}
+
+<div class="row">
+	@Html.ActionLink(
+		"Trier par date de création",
+		"Index",
+		"Users",
+		new { orderBy = OrderBy.CreationDate },
+		new { @class = "btn" })
+	@Html.ActionLink(
+		"Trier par date de modification",
+		"Index",
+		"Users",
+		new { orderBy = OrderBy.ModificationDate },
+		new { @class = "btn" })
+	@Html.ActionLink(
+		"Trier par nom",
+		"Index",
+		"Users",
+		new { orderBy = OrderBy.Name },
+		new { @class = "btn" })
+</div>
+
+<table class="table">
+	<tr>
+		<th>
+			Prénom
+		</th>
+		<th>
+			Nom
+		</th>
+		<th>
+			Courriel
+		</th>
+		<th>
+			Rôle
+		</th>
+	</tr>
+	@foreach (var user in Model)
+	{
+		<tr>
+			<td>
+				@user.FirstName
+			</td>
+			<td>
+				@user.LastName
+			</td>
+			<td>
+				@user.Email
+			</td>
+			<td>
+				@user.Role.Name
+			</td>
+		</tr>
+	}
+</table>
