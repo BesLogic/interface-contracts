@@ -38,9 +38,12 @@
 		<th>
 			Courriel
 		</th>
-		<th>
-			Rôle
-		</th>
+	    <th>
+	        Rôle
+	    </th>
+	    <th>
+	        Creation
+	    </th>
 	</tr>
 	@foreach (var user in Model)
 	{
@@ -54,9 +57,12 @@
 			<td>
 				@user.Email
 			</td>
-			<td>
-				@user.Role.Name
-			</td>
+		    <td>
+		        @user.Role.Name
+		    </td>
+		    <td>
+		        @user.Creation
+		    </td>
 		</tr>
 	}
 </table>

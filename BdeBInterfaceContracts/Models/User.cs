@@ -2,7 +2,7 @@
 
 namespace BdeBInterfaceContracts.Models
 {
-	public class User
+	public class User : IHasCreationDate
 	{
 		public int Id { get; set; }
 		public string FirstName { get; set; }
@@ -10,5 +10,6 @@ namespace BdeBInterfaceContracts.Models
 		public string Email { get; set; }
 		public string Phone { get; set; }
 		public UserRole Role { get; set; }
+        public DateTime Creation { get; set; }
 	}
 }

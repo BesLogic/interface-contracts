@@ -21,7 +21,7 @@ namespace BdeBInterfaceContracts.Repositories
 				LastName = "Bessette",
 				Email = "yannick.bessette@beslogic.com",
 				Role = GetRole(1),
-				// Creation = DateTime.Now.AddDays(-2),
+				Creation = DateTime.Now.AddDays(-2),
 				// Modification = DateTime.Now,
 			},
 			new User
@@ -31,7 +31,7 @@ namespace BdeBInterfaceContracts.Repositories
 				LastName = "Laprade",
 				Email = "pascal.laprade@beslogic.com",
 				Role = GetRole(1),
-				// Creation = DateTime.Now.AddDays(-1),
+				Creation = DateTime.Now.AddDays(-8),
 				// Modification = DateTime.Now.AddMinutes(-30),
 			},
 		};

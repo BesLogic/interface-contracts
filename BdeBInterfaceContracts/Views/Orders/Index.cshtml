@@ -38,6 +38,9 @@
 		<th>
 			Commandé par
 		</th>
+	    <th>
+	        Creation
+	    </th>
 	</tr>
 	@foreach (var order in Model)
 	{
@@ -48,9 +51,12 @@
 			<td>
 				@string.Format("{0,2:f}$", order.Price)
 			</td>
-			<td>
-				@order.User.FirstName
-			</td>
+		    <td>
+		        @order.User.FirstName
+		    </td>
+		    <td>
+		        @order.Creation
+		    </td>
 		</tr>
 	}
 </table>

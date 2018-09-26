@@ -20,7 +20,7 @@ namespace BdeBInterfaceContracts.Repositories
 				Description = "Café",
 				Price = 2m,
 				User = GetUser(1),
-				// Creation = DateTime.Now.AddDays(-2),
+				Creation = DateTime.Now.AddDays(-2),
 				// Modification = DateTime.Now.AddMinutes(-45),
 			},
 			new Order
@@ -29,7 +29,7 @@ namespace BdeBInterfaceContracts.Repositories
 				Description = "Sandwich",
 				Price = 7.5m,
 				User = GetUser(1),
-				// Creation = DateTime.Now.AddDays(-2),
+				Creation = DateTime.Now.AddDays(-2),
 				// Modification = DateTime.Now.AddMinutes(-30),
 			},
 			new Order
@@ -38,7 +38,7 @@ namespace BdeBInterfaceContracts.Repositories
 				Description = "Chaise de bureau",
 				Price = 74.99m,
 				User = GetUser(0),
-				// Creation = DateTime.Now.AddDays(-7),
+				Creation = DateTime.Now.AddDays(-7),
 				// Modification = DateTime.Now.AddHours(-8),
 			},
 		};

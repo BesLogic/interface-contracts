@@ -1,6 +1,7 @@
 ﻿using BdeBInterfaceContracts.Models;
 using BdeBInterfaceContracts.Repositories;
 using System.Web.Mvc;
+using BdeBInterfaceContracts.Services;
 
 namespace BdeBInterfaceContracts.Controllers
 {
@@ -9,7 +10,13 @@ namespace BdeBInterfaceContracts.Controllers
 		public ActionResult Index(OrderBy orderBy = OrderBy.Id)
 		{
 			var orders = new OrderRepository();
-			return View(orders);
-		}
+		    if (orderBy == OrderBy.CreationDate)
+		    {
+		        var orderingService = new OrderingService();
+		        var orderedOrders = orderingService.OrderByCreationDate(orders);
+		        return View(orderedOrders);
+            }
+		    return View(orders);
+        }
 	}
 }
