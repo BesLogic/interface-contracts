@@ -14,13 +14,7 @@
 		new { orderBy = OrderBy.CreationDate },
 		new { @class = "btn" })
 	@Html.ActionLink(
-		"Trier par date de modification",
-		"Index",
-		"Orders",
-		new { orderBy = OrderBy.ModificationDate },
-		new { @class = "btn" })
-	@Html.ActionLink(
-		"Trier par nom",
+		"Trier par description",
 		"Index",
 		"Orders",
 		new { orderBy = OrderBy.Name },
@@ -28,31 +22,37 @@
 </div>
 
 <table class="table">
-	<tr>
-		<th>
-			Description
-		</th>
-		<th>
-			Prix
-		</th>
-		<th>
-			Commandé par
-		</th>
-	    <th>
-	        Creation
-	    </th>
-	</tr>
+    <tr>
+        <th>
+            Description
+        </th>
+        <th>
+            Prix
+        </th>
+        <th>
+            Prix payé
+        </th>
+        <th>
+            Commandé par
+        </th>
+        <th>
+            Création
+        </th>
+    </tr>
 	@foreach (var order in Model)
 	{
 		<tr>
 			<td>
-				@order.Description
+				@order.Product.Description
 			</td>
 			<td>
-				@string.Format("{0,2:f}$", order.Price)
+				@string.Format("{0,2:f}$", order.Product.Price)
+			</td>
+			<td>
+				@string.Format("{0,2:f}$", order.PricePaid)
 			</td>
 		    <td>
-		        @order.User.FirstName
+		        @(order.User?.FirstName ?? "Client non-membre")
 		    </td>
 		    <td>
 		        @order.Creation

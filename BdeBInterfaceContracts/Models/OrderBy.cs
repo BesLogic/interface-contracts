@@ -3,8 +3,7 @@
 	public enum OrderBy
 	{
 		CreationDate,
-		ModificationDate,
 		Name,
-		Id,
+		None,
 	}
 }

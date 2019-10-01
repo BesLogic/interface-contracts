@@ -8,40 +8,45 @@ using System.Web;
 namespace BdeBInterfaceContracts.Repositories
 {
 	public class OrderRepository : IEnumerable<Order>
-	{
-		private static readonly UserRepository _userRepository =
-			new UserRepository();
+    {
+        private const decimal RebateForMembers = 0.9m;
 
-		private static readonly List<Order> _orders = new List<Order>
+        private static readonly UserRepository _userRepository =
+            new UserRepository();
+
+        private static readonly ProductRepository _productRepository =
+            new ProductRepository();
+
+        private static readonly List<Order> _orders = new List<Order>
 		{
 			new Order
 			{
 				Id = 0,
-				Description = "Café",
-				Price = 2m,
-				User = GetUser(1),
+                Product = GetProduct(0),
+                PricePaid = GetProduct(0).Price * RebateForMembers,
+				User = GetUser(2),
 				Creation = DateTime.Now.AddDays(-2),
-				// Modification = DateTime.Now.AddMinutes(-45),
 			},
 			new Order
 			{
 				Id = 1,
-				Description = "Sandwich",
-				Price = 7.5m,
+                Product = GetProduct(1),
+                PricePaid = GetProduct(1).Price,
 				User = GetUser(1),
-				Creation = DateTime.Now.AddDays(-2),
-				// Modification = DateTime.Now.AddMinutes(-30),
+				Creation = DateTime.Now.AddDays(-2).AddHours(4),
 			},
 			new Order
 			{
 				Id = 2,
-				Description = "Chaise de bureau",
-				Price = 74.99m,
-				User = GetUser(0),
+                Product = GetProduct(2),
+                PricePaid = GetProduct(2).Price * RebateForMembers,
+				User = GetUser(2),
 				Creation = DateTime.Now.AddDays(-7),
-				// Modification = DateTime.Now.AddHours(-8),
 			},
 		};
+
+        public void CreateOrder(Order order) =>
+            _orders.Add(order);
 
 		public IEnumerator<Order> GetEnumerator() => _orders.GetEnumerator();
 
@@ -49,5 +54,8 @@ namespace BdeBInterfaceContracts.Repositories
 
 		private static User GetUser(int id) =>
 			_userRepository.FirstOrDefault(user => user.Id == id);
-	}
+
+        private static Product GetProduct(int id) =>
+            _productRepository.FirstOrDefault(product => product.Id == id);
+    }
 }

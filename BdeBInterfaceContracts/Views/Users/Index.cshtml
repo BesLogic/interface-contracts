@@ -14,13 +14,7 @@
 		new { orderBy = OrderBy.CreationDate },
 		new { @class = "btn" })
 	@Html.ActionLink(
-		"Trier par date de modification",
-		"Index",
-		"Users",
-		new { orderBy = OrderBy.ModificationDate },
-		new { @class = "btn" })
-	@Html.ActionLink(
-		"Trier par nom",
+		"Trier par nom de famille",
 		"Index",
 		"Users",
 		new { orderBy = OrderBy.Name },
@@ -35,14 +29,11 @@
 		<th>
 			Nom
 		</th>
-		<th>
-			Courriel
-		</th>
 	    <th>
 	        Rôle
 	    </th>
 	    <th>
-	        Creation
+	        Création
 	    </th>
 	</tr>
 	@foreach (var user in Model)
@@ -53,9 +44,6 @@
 			</td>
 			<td>
 				@user.LastName
-			</td>
-			<td>
-				@user.Email
 			</td>
 		    <td>
 		        @user.Role.Name

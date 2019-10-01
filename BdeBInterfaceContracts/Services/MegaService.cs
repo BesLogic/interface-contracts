@@ -14,7 +14,7 @@ namespace BdeBInterfaceContracts.Services
 		private static readonly UserRepository _users =
 			new UserRepository();
 
-		private static UserRoleRepository _userRoles =
+		private static readonly UserRoleRepository _userRoles =
 			new UserRoleRepository();
 
 		private readonly Regex _emailRegex =
@@ -24,11 +24,11 @@ namespace BdeBInterfaceContracts.Services
 			$"{user.FirstName} {user.LastName}";
 
 		public bool ValidateEmail(User user) =>
-			_emailRegex.IsMatch(user.Email);
+			_emailRegex.IsMatch($"{user.FirstName}.{user.LastName}@example.com");
 
 		public void SendEmail(User user)
 		{
-			var to = user.Email;
+			var to = $"{user.FirstName}.{user.LastName}@example.com";
 			var title = "Courriel";
 			var email = new
 			{
@@ -45,7 +45,7 @@ namespace BdeBInterfaceContracts.Services
 
 		public IEnumerable<string> GetCurrentEmails() =>
 			_users
-				.Select(user => user.Email);
+				.Select(user => $"{user.FirstName}.{user.LastName}@example.com");
 
 		public IEnumerable<UserRole> GetUnusedRoles()
 		{

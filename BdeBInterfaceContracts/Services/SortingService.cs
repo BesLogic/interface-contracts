@@ -4,7 +4,7 @@ using BdeBInterfaceContracts.Models;
 
 namespace BdeBInterfaceContracts.Services
 {
-	public class OrderingService
+	public class SortingService
 	{
 	    public IEnumerable<T> OrderByCreationDate<T>(
 	        IEnumerable<T> orders)

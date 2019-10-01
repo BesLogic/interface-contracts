@@ -1,0 +1,64 @@
+﻿@using BdeBInterfaceContracts.Models
+
+@model StoreViewModel
+
+@{
+    ViewBag.Title = "Achat";
+}
+
+@if (Model.User != null && Model.User.Role.Name == "Membre Avantages")
+{
+    <p>
+        Transaction pour @Model.User.FirstName @Model.User.LastName.
+        Le rabais est appliqué.
+    </p>
+}
+else
+{
+    <p>
+        Transaction pour
+        @(
+            Model.User != null
+                ? $"{Model.User.FirstName} {Model.User.LastName}, "
+                : "un client"
+        )
+        non-membre Avantages. Aucun rabais.
+    </p>
+}
+
+<div>
+    @using (Html.BeginForm("Index", "Store", FormMethod.Get))
+    {
+        <input type="hidden" value=@(Model.Product.Id) name="productId" />
+        <label>
+            Choisir un utilisateur (ID) :
+            <input type="text" value=@(Model.NewUserId) name="userId" />
+        </label>
+        <button type="submit">
+            Sélectionner
+        </button>
+    }
+</div>
+
+<div>
+    <div>Produit : @Model.Product.Description</div>
+    <div>Prix à payer : @string.Format("{0,2:f}$", Model.PriceToPay)</div>
+</div>
+
+@Html.ActionLink(
+    "Confirmer",
+    "Confirm",
+    "Store",
+    new
+    {
+        productId = Model.Product.Id,
+        userId = Model.NewUserId,
+    },
+    new { @class = "btn" })
+
+@Html.ActionLink(
+    "Annuler",
+    "Index",
+    "Products",
+    new {},
+    new { @class = "btn" })

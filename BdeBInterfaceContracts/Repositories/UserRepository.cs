@@ -19,22 +19,26 @@ namespace BdeBInterfaceContracts.Repositories
 				Id = 0,
 				FirstName = "Yannick",
 				LastName = "Bessette",
-				Email = "yannick.bessette@beslogic.com",
-				Role = GetRole(1),
-				Creation = DateTime.Now.AddDays(-2),
-				// Modification = DateTime.Now,
+				Role = GetRole(0),
+				Creation = DateTime.Now.AddDays(-12),
 			},
 			new User
 			{
 				Id = 1,
 				FirstName = "Pascal",
 				LastName = "Laprade",
-				Email = "pascal.laprade@beslogic.com",
 				Role = GetRole(1),
 				Creation = DateTime.Now.AddDays(-8),
-				// Modification = DateTime.Now.AddMinutes(-30),
 			},
-		};
+            new User
+            {
+                Id = 2,
+                FirstName = "Stéphane",
+                LastName = "Lévesque",
+                Role = GetRole(2),
+                Creation = DateTime.Now.AddDays(-4),
+			},
+        };
 
 		public IEnumerator<User> GetEnumerator() => _users.GetEnumerator();
 

@@ -7,12 +7,12 @@ namespace BdeBInterfaceContracts.Controllers
 {
 	public class UsersController : Controller
 	{
-		public ActionResult Index(OrderBy orderBy = OrderBy.Id)
+		public ActionResult Index(OrderBy orderBy = OrderBy.None)
 		{
 			var users = new UserRepository();
 		    if (orderBy == OrderBy.CreationDate)
 		    {
-		        var orderingService = new OrderingService();
+		        var orderingService = new SortingService();
 		        var orderedUsers = orderingService.OrderByCreationDate(users);
 		        return View(orderedUsers);
 		    }

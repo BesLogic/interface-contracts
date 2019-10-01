@@ -1,0 +1,61 @@
+﻿@using BdeBInterfaceContracts.Models
+
+@model IEnumerable<Product>
+
+@{
+	ViewBag.Title = "Produits";
+}
+
+<div class="row">
+	@Html.ActionLink(
+		"Trier par date de création",
+		"Index",
+		"Products",
+		new { orderBy = OrderBy.CreationDate },
+		new { @class = "btn" })
+	@Html.ActionLink(
+		"Trier par description",
+		"Index",
+		"Products",
+		new { orderBy = OrderBy.Name },
+		new { @class = "btn" })
+</div>
+
+<table class="table">
+	<tr>
+		<th>
+			Description
+		</th>
+		<th>
+			Prix
+		</th>
+	    <th>
+	        Création
+	    </th>
+        <th>
+            Actions
+        </th>
+	</tr>
+	@foreach (var product in Model)
+    {
+		<tr>
+			<td>
+				@product.Description
+			</td>
+			<td>
+				@string.Format("{0,2:f}$", product.Price)
+			</td>
+		    <td>
+		        @product.Creation
+		    </td>
+            <td>
+                @Html.ActionLink(
+                    "Acheter",
+                    "Index",
+                    "Store",
+                    new { productId = product.Id },
+                    new { @class = "btn" })
+            </td>
+		</tr>
+	}
+</table>

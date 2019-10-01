@@ -1,9 +1,6 @@
 ﻿using BdeBInterfaceContracts.Models;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace BdeBInterfaceContracts.Repositories
 {
@@ -14,14 +11,19 @@ namespace BdeBInterfaceContracts.Repositories
 			new UserRole
 			{
 				Id = 0,
-				Name = "User",
+				Name = "Admin",
 			},
 			new UserRole
 			{
 				Id = 1,
-				Name = "Admin",
+				Name = "Caissier",
 			},
-		};
+            new UserRole
+            {
+                Id = 2,
+                Name = "Membre Avantages",
+            },
+        };
 
 		public IEnumerator<UserRole> GetEnumerator() => _orders.GetEnumerator();
 
