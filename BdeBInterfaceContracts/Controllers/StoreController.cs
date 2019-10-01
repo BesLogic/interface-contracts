@@ -1,4 +1,5 @@
-﻿using BdeBInterfaceContracts.Models;
+﻿using BdeBInterfaceContracts.Extensions;
+using BdeBInterfaceContracts.Models;
 using BdeBInterfaceContracts.Repositories;
 using System;
 using System.Linq;
@@ -22,15 +23,30 @@ namespace BdeBInterfaceContracts.Controllers
             var user = userRepository
                 .FirstOrDefault(potentialUser => potentialUser.Id == userId);
 
+            #region EX 4.4
+
+            // EX 4.4
+            // Commençons par appeler notre méthode d'extension sur le user.
+            // Ça s'écrit "var priceCalculator = user.GetPriceCalculator();".
+            // Puis, à l'aide du priceCalculator, allez ajuster le PriceToPay
+            // plus bas pour qu'il soit calculé selon la logique du client,
+            // plutôt que codé au prix du produit.
+            // À ce point des exercices, nous vous laissons déterminer comment
+            // vous y prendre : vous avez un IProductCalculator et un Product,
+            // vous devriez donc tout avoir pour réussir!
+            // Allez à EX 4.5 par la suite.
+
             var viewModel = new StoreViewModel
             {
                 Product = product,
                 User = user,
-                // Using the new PriceCalculators, add the logic so that the
-                // price is set to the correct value when a user is 
+                // EX 4.4
+                // Utilisez le bon prix, ici!
                 PriceToPay = product.Price,
                 NewUserId = userId,
             };
+
+            #endregion
 
             return View(viewModel);
         }
@@ -48,6 +64,16 @@ namespace BdeBInterfaceContracts.Controllers
             var user = userRepository
                 .FirstOrDefault(potentialUser => potentialUser.Id == userId);
 
+            #region EX 4.5
+
+            // EX 4.5
+            // Il faut reproduire la même logique qu'à EX 4.4, ici, mais cette
+            // fois, il faut assigner le prix à la propriété "PricePaid",
+            // puisque c'est ici que la transaction est complétée.
+            // Une fois terminé, vous avez fini avec le Sprint 3!
+            // Testez votre fonctionnalité pour vous assurer d'être prêt
+            // pour votre démo chez le client!
+
             var order = new Order
             {
                 Id = _pseudoRandomGenerator.Next(),
@@ -56,6 +82,8 @@ namespace BdeBInterfaceContracts.Controllers
                 PricePaid = product.Price,
                 Creation = DateTime.Now,
             };
+
+            #endregion
 
             orderRepository.CreateOrder(order);
 

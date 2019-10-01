@@ -49,11 +49,10 @@ namespace BdeBInterfaceContracts.Services
 
 		public IEnumerable<UserRole> GetUnusedRoles()
 		{
-			var currentRoleIds =
-				_users
-					.Select(user => user.Role)
-					.Select(role => role.Id)
-					.ToArray();
+			var currentRoleIds = _users
+				.Select(user => user.Role)
+				.Select(role => role.Id)
+				.ToArray();
 
 			return _userRoles
 				.Where(role => !currentRoleIds.Contains(role.Id));
