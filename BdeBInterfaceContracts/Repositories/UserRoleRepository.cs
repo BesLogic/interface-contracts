@@ -11,7 +11,7 @@ namespace BdeBInterfaceContracts.Repositories
 			new UserRole
 			{
 				Id = 0,
-				Name = "Admin",
+				Name = "Gestionnaire",
 			},
 			new UserRole
 			{
